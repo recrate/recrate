@@ -1,11 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recrate</title>
+    <style>
+        :root {
+            --background-primary: #141413;
+            --color-primary: #fff;
+
+            --radius-xs: 4px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-max: 1000px;
+
+            --gap-xxs: 4px;
+            --gap-xs: 12px;
+            --gap-sm: 16px;
+            --gap-md: 24px;
+            --gap-lg: 32px;
+            --gap-xl: 48px;
+
+            --container-max-width: 1400px;
+            --header-padding-x: 64px;
+            --header-padding-y: 16px;
+
+            --sp-24: 24px;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--background-primary);
+            color: var(--color-primary);
+            font-family: Arial, Helvetica, sans-serif;
+            text-rendering: optimizeLegibility;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 125%;
+        }
+
+        header {
+            background-color: var(--background-primary);
+            position: sticky;
+            top: 0;
+            padding: var(--header-padding-y) var(--header-padding-x);
+            margin: 0 auto;
+            max-width: calc(var(--container-max-width) - 2 * var(--header-padding-y));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            & nav {
+                display: flex;
+                align-items: center;
+                gap: var(--sp-24);
+
+                &>ul {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--sp-24);
+                    padding-left: 0;
+                    margin: 0;
+                    list-style: none;
+
+                    &>li {
+                        font-size: 15px;
+                        line-height: 140%;
+                        letter-spacing: 0;
+
+                        &>a {
+                            white-space: nowrap;
+                            color: inherit;
+                            text-underline-offset: .2em;
+                            text-decoration: none;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        main {
+            padding: 0 var(--header-padding-x);
+            margin: 0 auto;
+            max-width: 633px;
+
+            &>p {
+                color: #ffffffe6;
+                margin: .85em 0;
+                font-size: 17px;
+                line-height: 26px;
+            }
+        }
+
+        button {
+            background-color: var(--color-primary);
+            color: var(--background-primary);
+            padding: 8px 16px;
+            border: 0;
+            border-radius: var(--radius-xs);
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color .2s;
+
+            &:hover {
+                background-color: #ffffffe6;
+            }
+        }
+
+        [foreach]>*:first-child {
+            display: none;
+        }
+    </style>
+    <script src="src/lib.js" defer></script>
+    <script src="src/app.js" defer></script>
 </head>
+
 <body>
-    404
+    <header>
+        Logo
+        <nav>
+            <ul foreach="users">
+                <li><a href="/">{name} {age}</a></li>
+            </ul>
+            <button id="add">Add user</button>
+        </nav>
+    </header>
+    <main>
+
+    </main>
 </body>
+
 </html>
